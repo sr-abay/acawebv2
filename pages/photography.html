@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography | Personal Website</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <!-- <li><a href="../contact.html">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="photography">
+        <h2>Photography Gallery</h2>
+        <p>Explore some of my favorite captures, taken from various locations and experiences.</p>
+
+        <div class="gallery">
+            <!-- Images will be loaded dynamically -->
+        </div>
+    </main>
+
+    <!-- Lightbox Container -->
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content">
+        <div class="caption"></div>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://x.com/srabay16" target="_blank" title="Twitter">
+                <img src="https://cdn-icons-png.flaticon.com/512/3256/3256013.png" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/sr.abay/" target="_blank" title="Instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/3955/3955024.png" alt="Instagram">
+            </a>
+            <a href="https://github.com" target="_blank" title="GitHub">
+                <img src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" alt="GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/sr-abay/" target="_blank" title="LinkedIn">
+                <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn">
+            </a>
+            <a href="https://scholar.google.com/citations?user=9Ro14-gAAAAJ&hl=en" target="_blank" title="Google Scholar">
+                <img src="https://cdn-icons-png.flaticon.com/512/2702/2702134.png" alt="Google Scholar">
+            </a>
+            <a href="mailto:srabay16@gmail.com" title="Email">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+            </a>
+            <!-- Future links-->
+            <!-- <a href="https://goodreads.com" target="_blank" title="Goodreads">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111297.png" alt="Goodreads">
+            </a> -->
+            <!-- <a href="https://youtube.com" target="_blank" title="YouTube">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670147.png" alt="YouTube">
+            </a> -->
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const gallery = document.querySelector(".gallery");
+            const imageFolder = "../assets/images/photography/";
+            const imageNames = [
+                "photo1.jpg", "photo2.jpg", "photo3.jpg",
+                "photo4.jpg", "photo5.jpg", "photo6.jpg", 
+                "photo7.jpg", "photo8.jpg", "photo9.jpg",
+            ];
+
+            imageNames.forEach(image => {
+                let imgElement = document.createElement("img");
+                imgElement.src = imageFolder + image;
+                imgElement.alt = "";
+                imgElement.classList.add("gallery-img");
+                imgElement.addEventListener("click", function () {
+                    openLightbox(this.src, this.alt);
+                });
+                gallery.appendChild(imgElement);
+            });
+
+            // Lightbox functionality
+            const lightbox = document.querySelector(".lightbox");
+            const lightboxContent = document.querySelector(".lightbox-content");
+            const caption = document.querySelector(".caption");
+            const closeLightbox = document.querySelector(".close");
+
+            function openLightbox(src, alt) {
+                lightbox.style.display = "flex";
+                lightboxContent.src = src;
+                caption.textContent = alt;
+            }
+
+            closeLightbox.addEventListener("click", function () {
+                lightbox.style.display = "none";
+            });
+
+            lightbox.addEventListener("click", function (e) {
+                if (e.target !== lightboxContent) {
+                    lightbox.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

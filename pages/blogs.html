@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="photography.html">Photography</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <!-- <li><a href="../contact.html">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <div class="construction-zone">
+        <div class="cone">🚧</div>
+        <h1>OOPS! UNDER CONSTRUCTION</h1>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p class="excuse" id="excuse">Loading excuse...</p>
+    </div>
+    <div class="worker">👷</div>
+
+    <script>
+        const excuses = [
+            "The hamsters powering our servers are on strike",
+            "Our code monkey called in sick",
+            "Someone spilled coffee on the database",
+            "The internet is having a bad hair day",
+            "Our pixels are being artisanally crafted",
+            "The cloud is currently cloudy",
+            "Our developers are debugging their life choices",
+            "Loading more loading messages..."
+        ];
+
+        function updateExcuse() {
+            const excuse = document.getElementById('excuse');
+            excuse.textContent = excuses[Math.floor(Math.random() * excuses.length)];
+        }
+
+        updateExcuse();
+        setInterval(updateExcuse, 3000);
+    </script>
+</body>
+</html>
